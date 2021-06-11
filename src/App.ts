@@ -1,23 +1,15 @@
-import { writeFile } from 'fs/promises'
-import { ScanType } from './misc/ScanType'
-import NmapScanResponse from './response/NmapScanResponse'
-import CustomTcpScan from './scan/CustomTcpScan'
-import { ListScan } from './scan/ListScan'
-import { NmapScan } from './scan/NmapScan'
-
-export type HostDiscoveryType = 'list-scan' | 'no-port-scan' | 'no-ping' | 'tcp-syn' | 'tcp-ack' | 'udp-ping' | 'sctp-init'
+import { writeFileSync } from 'fs'
+import ListScan from './scans/list-scan/ListScan'
 
 async function main() {
 
-    const scan = new ListScan({
+    const Scan1 = new ListScan({
         target: '192.168.1.1/24',
-        resolve: 'sometimes'
+        resolve: 'never'
     })
+    const result = await Scan1.run()
+    writeFileSync('result.json', JSON.stringify(result, null, 2))
 
-    const result = await scan.run()
-
-    console.log(result)
-    
 }
 
 main()

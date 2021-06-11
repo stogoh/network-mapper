@@ -113,3 +113,4 @@ dist
 
 # Compiles JS code
 lib/
+build/

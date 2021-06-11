@@ -2,28 +2,44 @@
   "name": "network-mapper",
   "version": "1.0.0",
   "type": "commonjs",
-  "engines": {
-    "node": "14.8.0"
-  },
-  "main": "./dist/app.js",
+  "main": "./build/App.js",
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node ./dist/App.js",
+    "start": "tsc & node build/src/App.js",
     "prepublish": "npm run build",
-    "lint": "eslint ./src/*"
+    "lint": "eslint src/**/*.ts",
+    "lint-fix": "eslint --fix src/**/*.ts",
+    "test": "mocha --timeout 5000 -r ts-node/register 'tests/**/*.test.ts'"
   },
+  "keywords": [
+    "nmap",
+    "network",
+    "scanner",
+    "spoofing"
+  ],
   "files": [
-    "dist"
+    "build"
   ],
   "author": "stogoh",
-  "license": "GPL-3.0-or-later",
-  "dependencies": {
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stogoh/network-mapper.git"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.18",
+    "@types/mocha": "^8.2.2",
     "@types/node": "^14.14.22",
+    "@types/xml2js": "^0.4.8",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
+    "chai": "^4.3.4",
     "eslint": "^7.26.0",
+    "mocha": "^8.4.0",
+    "ts-node": "^10.0.0",
     "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.23"
   }
 }
