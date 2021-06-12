@@ -1,2 +1,5 @@
 src/
-tests/
+test/
+/list/app.d.ts
+/list/app.js
+/list/app.js.map
