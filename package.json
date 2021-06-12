@@ -24,6 +24,7 @@
   ],
   "author": "stogoh",
   "license": "GPL-3.0",
+  "homepage": "https://github.com/stogoh/network-mapper",
   "repository": {
     "type": "git",
     "url": "https://github.com/stogoh/network-mapper.git"
