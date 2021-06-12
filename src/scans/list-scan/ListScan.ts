@@ -3,7 +3,7 @@ import { NmapScanOption } from '../nmap-scan/NmapScanOption'
 import ListScanResponse from './ListScanResponse'
 import { NmapScan } from '../nmap-scan/NmapScan'
 
-export default class ListScan extends NmapScan<ListScanOption, ListScanResponse> {
+export class ListScan extends NmapScan {
 
     constructor(opts: ListScanOption) {
         super(opts)

@@ -4,20 +4,20 @@ import Host from '../../misc/Host'
 import { NmapScanOption } from './NmapScanOption'
 import NmapScanResponse from './NmapScanResponse'
 
-export class NmapScan<TOption, TResponse = NmapScanResponse> {
+export class NmapScan {
    private nmapLocation = 'nmap'
    protected options: NmapScanOption = {}
    private arguments: string[] = []
    protected rawResponse: any
    protected response: NmapScanResponse
 
-   constructor(opts: TOption) {
+   constructor(opts: NmapScanOption) {
       if (opts) {
          this.options = opts
       }
    }
 
-   public async run(): Promise<TResponse> {
+   public async run(): Promise<NmapScanResponse> {
       this.arguments = this.constructArguments()
       const result = await this.exec()
       this.rawResponse = await parseXml(result, {
@@ -30,7 +30,7 @@ export class NmapScan<TOption, TResponse = NmapScanResponse> {
 
       this.response.nmapArguments = this.rawResponse['nmaprun']['args']
 
-      return this.response as unknown as TResponse
+      return this.response as unknown as NmapScanResponse
    }
 
    protected constructArguments(): string[] {

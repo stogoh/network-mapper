@@ -2,23 +2,24 @@
   "name": "network-mapper",
   "version": "1.0.0",
   "type": "commonjs",
-  "main": "./build/App.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "start": "tsc & node build/src/App.js",
     "prepublish": "npm run build",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
-    "test": "mocha --timeout 5000 -r ts-node/register 'tests/**/*.test.ts'"
+    "test": "mocha --timeout 5000 -r ts-node/register 'test/**/*.test.ts'"
   },
+  "files": ["lib"],
   "keywords": [
     "nmap",
     "network",
+    "mapper",
     "scanner",
-    "spoofing"
-  ],
-  "files": [
-    "build"
+    "spoofing",
+    "host",
+    "discovery"
   ],
   "author": "stogoh",
   "license": "GPL-3.0",

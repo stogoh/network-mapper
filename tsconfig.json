@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "esModuleInterop": true,
     "target": "ES2020",
+    "module": "System",
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "./build",
-    "resolveJsonModule": true
+    "declaration": true,
+    "lib": ["ES2020"],
+    "outDir": "./lib/"
   },
-  "lib": ["es2015"]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
