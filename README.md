@@ -53,7 +53,7 @@ async function main() {
 
     const scan = new ListScan({
         target: '192.168.1.1/24',
-        exlude: ['192.168.1.0', '192.168.1.255'],
+        exclude: ['192.168.1.0', '192.168.1.255'],
         dnsServer: ['1.1.1.1', '8.8.8.8'],
     })
 
@@ -66,7 +66,7 @@ main()
 ```
 
 
-## ScanTypes
+## Scan Types
 
 - `ListScan` Lists each host of the network(s) specified, without sending any packets to the target hosts.
 - `NmapScan` This is the core scan of the package, using this scan type directly will allow to run very customized scans.
