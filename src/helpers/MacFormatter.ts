@@ -8,31 +8,31 @@ export function formatMac(input: string, format: MacFormat): string {
     }
 
     switch (format) {
-    case 'lowercase-not-seperated':
-        return normalizedInput
+        case 'lowercase-not-seperated':
+            return normalizedInput
 
-    case 'lowercase-colon-seperated':
-        return normalizedInput.match(/.{1,2}/g).join(':')
+        case 'lowercase-colon-seperated':
+            return normalizedInput.match(/.{1,2}/g).join(':')
 
-    case 'lowercase-hypen-seperated':
-        return normalizedInput.match(/.{1,2}/g).join('-')
+        case 'lowercase-hypen-seperated':
+            return normalizedInput.match(/.{1,2}/g).join('-')
 
-    case 'lowercase-period-seperated':
-        return normalizedInput.match(/.{1,3}/g).join('.')
+        case 'lowercase-period-seperated':
+            return normalizedInput.match(/.{1,3}/g).join('.')
 
-    case 'uppercase-not-seperated':
-        return normalizedInput.toUpperCase()
+        case 'uppercase-not-seperated':
+            return normalizedInput.toUpperCase()
 
-    case 'uppercase-colon-seperated':
-        return normalizedInput.match(/.{1,2}/g).join(':').toUpperCase()
+        case 'uppercase-colon-seperated':
+            return normalizedInput.match(/.{1,2}/g).join(':').toUpperCase()
 
-    case 'uppercase-hypen-seperated':
-        return normalizedInput.match(/.{1,2}/g).join('-').toUpperCase()
+        case 'uppercase-hypen-seperated':
+            return normalizedInput.match(/.{1,2}/g).join('-').toUpperCase()
 
-    case 'uppercase-period-seperated':
-        return normalizedInput.match(/.{1,3}/g).join('.').toUpperCase()
+        case 'uppercase-period-seperated':
+            return normalizedInput.match(/.{1,3}/g).join('.').toUpperCase()
 
-    default:
-        return null
+        default:
+            return null
     }
 }

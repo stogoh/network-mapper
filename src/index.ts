@@ -1,4 +1,3 @@
-import { RandomOption } from './options/TargetSpecificationOptions'
 import { ListScan } from './scans/list-scan/ListScan'
 import { ListScanOption } from './scans/list-scan/ListScanOption'
 import ListScanResponse from './scans/list-scan/ListScanResponse'
@@ -12,6 +11,5 @@ export {
     NmapScanResponse,
     ListScan,
     ListScanOption,
-    ListScanResponse,
-    RandomOption
+    ListScanResponse
 }

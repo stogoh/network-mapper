@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import { NmapScanOption } from '../../../src/scans/nmap-scan/NmapScanOption'
 import { NmapScan } from '../../../src/scans/nmap-scan/NmapScan'
 
-export class TestableNmapScan extends NmapScan<NmapScanOption> {
+export class TestableNmapScan extends NmapScan {
     public constructArguments() {
         return super.constructArguments()
     }
