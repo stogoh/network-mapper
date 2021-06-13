@@ -28,7 +28,7 @@ This package requires that [Nmap](https://nmap.org/) installed and available to 
 The following example scans the specified target network for hosts.
 
 ```typescript
-import { ListScan } from './scans/list-scan/ListScan'
+import { ListScan } from 'network-mapper'
 
 async function main() {
 
@@ -47,7 +47,7 @@ main()
 The following example scan the specified target for hosts. The first and last hosts in the network are excluded from the network scan. The hostnames are resolved via the specified DNS resolvers.
 
 ```typescript
-import { ListScan } from './scans/list-scan/ListScan'
+import { ListScan } from 'network-mapper'
 
 async function main() {
 
