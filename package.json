@@ -1,12 +1,11 @@
 {
   "name": "network-mapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "commonjs",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node lib/app.js",
     "prepublish": "npm run build",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",

@@ -1,6 +1,5 @@
 import { ListScanOption } from './ListScanOption'
 import { NmapScanOption } from '../nmap-scan/NmapScanOption'
-import ListScanResponse from './ListScanResponse'
 import { NmapScan } from '../nmap-scan/NmapScan'
 
 export class ListScan extends NmapScan {

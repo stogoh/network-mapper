@@ -1,5 +1,6 @@
+.git/
 src/
 test/
-/list/app.d.ts
-/list/app.js
-/list/app.js.map
+/lib/app.d.ts
+/lib/app.js
+/lib/app.js.map

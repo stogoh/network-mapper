@@ -1,4 +1,4 @@
-import { CustomTcpScanFlag } from '../scans/CustomTcpScan'
+export type CustomTcpScanFlag = 'URG' | 'ACK' | 'PSH' | 'RST' | 'SYN' | 'FIN'
 
 export interface ScanflagOption {
     scanflag?: CustomTcpScanFlag | CustomTcpScanFlag[]
