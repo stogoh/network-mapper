@@ -73,12 +73,12 @@ export class NmapScan {
         }
 
         // exclude
-        if (opts.exlude !== undefined) {
+        if (opts.exclude !== undefined) {
             args.push('--exclude')
-            if (Array.isArray(opts.exlude)) {
-                args.push(opts.exlude.join())
+            if (Array.isArray(opts.exclude)) {
+                args.push(opts.exclude.join())
             } else {
-                args.push(opts.exlude)
+                args.push(opts.exclude)
             }
         }
 
@@ -108,9 +108,9 @@ export class NmapScan {
         }
 
         // traceroute
-        // if (opts.traceroute) {
-        //    args.push('--traceroute')
-        // }
+        if (opts.traceroute) {
+            args.push('--traceroute')
+        }
 
         // ttl
         // if (opts.ttl !== undefined) {

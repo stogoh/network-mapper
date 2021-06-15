@@ -7,7 +7,7 @@ describe('Option: exclude', () => {
             scanType: 'list-scan',
             dryrun: true,
             target: '192.168.1.1/24',
-            exlude: '192.168.1.100'
+            exclude: '192.168.1.100'
         })
         const argString = scan.constructArguments().join(' ')
         const result = await scan.run()
@@ -23,7 +23,7 @@ describe('Option: exclude', () => {
             scanType: 'list-scan',
             dryrun: true,
             target: '192.168.1.1/24',
-            exlude: ['192.168.1.100', '192.168.1.200']
+            exclude: ['192.168.1.100', '192.168.1.200']
         })
         const argString = scan.constructArguments().join(' ')
         const result = await scan.run()
