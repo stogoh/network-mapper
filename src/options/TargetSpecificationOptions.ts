@@ -22,5 +22,5 @@ export interface RandomOption {
 }
 
 export interface ExcludeOption {
-    exlude?: string | string[]
+    exclude?: string | string[]
 }

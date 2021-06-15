@@ -13,7 +13,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "spellcheck"
     ],
     "rules": {
         "indent": [
@@ -42,6 +43,20 @@
         ],
         "camelcase": [
             "error"
+        ],
+        "spellcheck/spell-checker": [
+            "warn",
+            {
+                "skipWordIfMatch": [
+                    "^n|Nmap$",
+                    "^d|Dryrun$",
+                    "^t|Traceroute$",
+                    "^i|Ipv6$",
+                    "^b|Badsum$",
+                    "^hostnames$"
+                ],
+                "minLength": 4
+            }
         ]
     }
 }

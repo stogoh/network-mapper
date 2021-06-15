@@ -13,7 +13,7 @@ export interface ForceMemoryReleaseOption {
 }
 
 export interface DryrunOption {
-    dryrun?: boolean // Only for Listscan (-sL)
+    dryrun?: boolean // Only for list scan (-sL)
 }
 
 export interface PrivilegedModeOption {

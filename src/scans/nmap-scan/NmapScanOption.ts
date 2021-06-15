@@ -1,4 +1,4 @@
-import { DnsServerOption, RandomizeHostsOption, ResolveOption, UseSystemDnsOption } from '../../options/HostDiscoveryOptions'
+import { DnsServerOption, RandomizeHostsOption, ResolveOption, TracerouteOption, UseSystemDnsOption } from '../../options/HostDiscoveryOptions'
 import { DryrunOption } from '../../options/MiscOptions'
 import { ExcludeOption, RandomOption, ScanTypeOption, TargetOption } from '../../options/TargetSpecificationOptions'
 
@@ -11,5 +11,6 @@ ResolveOption,
 DnsServerOption,
 UseSystemDnsOption,
 RandomizeHostsOption,
-DryrunOption
+DryrunOption,
+TracerouteOption
 {}

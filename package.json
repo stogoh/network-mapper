@@ -1,6 +1,6 @@
 {
   "name": "network-mapper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "commonjs",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -11,7 +11,9 @@
     "lint-fix": "eslint --fix src/**/*.ts",
     "test": "mocha --timeout 5000 -r ts-node/register 'test/**/*.test.ts'"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "nmap",
     "network",
@@ -37,6 +39,7 @@
     "@typescript-eslint/parser": "^4.23.0",
     "chai": "^4.3.4",
     "eslint": "^7.26.0",
+    "eslint-plugin-spellcheck": "^0.0.17",
     "mocha": "^8.4.0",
     "ts-node": "^10.0.0",
     "typescript": "^4.1.3"
