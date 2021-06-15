@@ -25,6 +25,7 @@ This package requires that [Nmap](https://nmap.org/) installed and available to 
 
 ## Usage
 
+### Simple list scan
 The following example scans the specified target network for hosts.
 
 ```typescript
@@ -44,7 +45,9 @@ async function main() {
 main()
 ```
 
-The following example scan the specified target for hosts. The first and last hosts in the network are excluded from the network scan. The hostnames are resolved via the specified DNS resolvers.
+### List scan with excluded addresses and reverse lookup
+
+The following example scans a specified target network. The first and last hosts in the network are excluded from the network scan. The hostnames are resolved via the specified DNS resolvers.
 
 ```typescript
 import { ListScan } from 'network-mapper'
@@ -54,7 +57,7 @@ async function main() {
     const scan = new ListScan({
         target: '192.168.1.1/24',
         exclude: ['192.168.1.0', '192.168.1.255'],
-        dnsServer: ['1.1.1.1', '8.8.8.8'],
+        dnsServer: ['1.1.1.1', '8.8.8.8']
     })
 
     const result = await scan.run()
@@ -65,6 +68,30 @@ async function main() {
 main()
 ```
 
+### Nmap scan with traceroute
+
+The following example uses the core NmapScan. A ping scan is used to discover if the hosts are up. For each host which is up the route will be determined. Additionally for each hop a reverse lookup is executed.
+
+```typescript
+import { NmapScan } from 'network-mapper'
+
+async function main() {
+
+    const scan = new NmapScan({
+        scanType: 'ping-scan',
+        target: 'google.com/24',
+        dnsServer: ['8.8.8.8', '8.8.4.4'],
+        resolve: 'all',
+        traceroute: true
+    })
+
+    const result = await scan.run()
+    console.log(result)
+
+}
+
+main()
+```
 
 ## Scan Types
 
@@ -73,25 +100,25 @@ main()
 
 ## Options
 
-### **target** `string | string[]`
+### **target**
 
 Specifies which targets to scan. The [Target Specification](https://nmap.org/book/man-target-specification.html) syntax from Nmap can be used. The option allows either a string or string array as an argument.
 
-When a hostname is given as a target, is is resolved  via the domain name system.
+When a hostname is given as a target, it is resolved via the domain name system.
 
-### **exclude** `string | string[]`
+### **exclude**
 
 Specifies targets hosts to be excluded from the scan. The hosts passed can include hostnames, CIDR netblocks, IP ranges, etc.
 
-### **random** `number`
+### **random**
 
 For larger network scans it might be useful to choose target hosts at random. Using this option an amount of random hosts can be specified.
 
-### **randomizeHosts** `boolean`
+### **randomizeHosts**
 
 The unserlaying Nmap process scans the hosts in order. Some IDS(Intrustion detection systems) might detect that an block following requests. When set Nmap randomizes the targets to scan.
 
-### **resolve** `'never' | 'sometimes' | 'always' | 'all'`
+### **resolve**
 
 Specifies for which IP addresses a reverse DNS lookup is run.
 
@@ -100,14 +127,18 @@ Specifies for which IP addresses a reverse DNS lookup is run.
 - `always` Try to resolve each target host address
 - `all` Also resolve all hosts addresses which are a part of the traceroute
 
-### **useSystemDns** `boolean`
+### **useSystemDns**
 
 By default, Nmap uses a custom stub resolver which performs dozends of requests in parallel. This option can be used to force use the system's DNS resolver. Using the system resolver can drasticly increase the resolve time for each host.
 
-### **dnsServer** `string | string[]`
+### **dnsServer**
 
 By default, Nmap uses the system specified DNS servers to resolve IP addresses. A custom list of DNS resovler can be specified which this option.
 
 ### **dryrun**
 
 Before running large network scans it might be usefull to run a dryrun fist. This dryrun will not send any network packages at all. The response still return the addresses which will be scanned.
+
+### traceroute
+
+Determine all intermediate hops between the scanner and target host. This works by sending packets with a low TTL (time-to-live) in an attempt to elict ICMP Time Exceeded message from the intermediate hops. By increasing the TTL until the target host is reachst, the traceroute can be determined.
