@@ -2,7 +2,7 @@
 
 Nmap wrapper for node fully coded in TypeScript.
 
-This module is still in heavy development. As of now only the listscan is implemented, futher more advanced scanns will be implemented.
+This module is still in heavy development. As of now only the list scan is implemented, further more advanced scans will be implemented.
 
 ![NPM](https://img.shields.io/npm/l/network-mapper?label=License)
 ![npm](https://img.shields.io/npm/dt/network-mapper?label=Downloads)
@@ -116,29 +116,29 @@ For larger network scans it might be useful to choose target hosts at random. Us
 
 ### **randomizeHosts**
 
-The unserlaying Nmap process scans the hosts in order. Some IDS(Intrustion detection systems) might detect that an block following requests. When set Nmap randomizes the targets to scan.
+The underlying Nmap process scans the hosts in order. Some IDS(Intrusion detection systems) might detect that an block following requests. When set Nmap randomizes the targets to scan.
 
 ### **resolve**
 
 Specifies for which IP addresses a reverse DNS lookup is run.
 
 - `never` Do not run reverse DNS lookup for any address
-- `sometimes` Nmap decises which adresses to run a reverse DNS lookup
+- `sometimes` Nmap decides which addresses to run a reverse DNS lookup
 - `always` Try to resolve each target host address
 - `all` Also resolve all hosts addresses which are a part of the traceroute
 
 ### **useSystemDns**
 
-By default, Nmap uses a custom stub resolver which performs dozends of requests in parallel. This option can be used to force use the system's DNS resolver. Using the system resolver can drasticly increase the resolve time for each host.
+By default, Nmap uses a custom stub resolver which performs dozends of requests in parallel. This option can be used to force use the system's DNS resolver. Using the system resolver can drastically increase the resolve time for each host.
 
 ### **dnsServer**
 
-By default, Nmap uses the system specified DNS servers to resolve IP addresses. A custom list of DNS resovler can be specified which this option.
+By default, Nmap uses the system specified DNS servers to resolve IP addresses. A custom list of DNS resolver can be specified which this option.
 
 ### **dryrun**
 
-Before running large network scans it might be usefull to run a dryrun fist. This dryrun will not send any network packages at all. The response still return the addresses which will be scanned.
+Before running large network scans it might be useful to run a dryrun fist. This dryrun will not send any network packages at all. The response still return the addresses which will be scanned.
 
 ### traceroute
 
-Determine all intermediate hops between the scanner and target host. This works by sending packets with a low TTL (time-to-live) in an attempt to elict ICMP Time Exceeded message from the intermediate hops. By increasing the TTL until the target host is reachst, the traceroute can be determined.
+Determine all intermediate hops between the scanner and target host. This works by sending packets with a low TTL (time-to-live) in an attempt to elicit ICMP Time Exceeded message from the intermediate hops. By increasing the TTL until the target host is reached, the traceroute can be determined.

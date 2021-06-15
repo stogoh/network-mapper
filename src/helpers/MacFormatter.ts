@@ -1,4 +1,4 @@
-export type MacFormat = 'lowercase-not-seperated' | 'lowercase-colon-seperated' | 'lowercase-hypen-seperated' | 'lowercase-period-seperated' | 'uppercase-not-seperated' | 'uppercase-colon-seperated' | 'uppercase-hypen-seperated' | 'uppercase-period-seperated'
+export type MacFormat = 'lowercase-not-separated' | 'lowercase-colon-separated' | 'lowercase-hyphen-separated' | 'lowercase-period-separated' | 'uppercase-not-separated' | 'uppercase-colon-separated' | 'uppercase-hyphen-separated' | 'uppercase-period-separated'
 
 export function formatMac(input: string, format: MacFormat): string {
     const normalizedInput = input.replace(/[^0-9a-f]/gi, '').toLowerCase()
@@ -8,28 +8,28 @@ export function formatMac(input: string, format: MacFormat): string {
     }
 
     switch (format) {
-        case 'lowercase-not-seperated':
+        case 'lowercase-not-separated':
             return normalizedInput
 
-        case 'lowercase-colon-seperated':
+        case 'lowercase-colon-separated':
             return normalizedInput.match(/.{1,2}/g).join(':')
 
-        case 'lowercase-hypen-seperated':
+        case 'lowercase-hyphen-separated':
             return normalizedInput.match(/.{1,2}/g).join('-')
 
-        case 'lowercase-period-seperated':
+        case 'lowercase-period-separated':
             return normalizedInput.match(/.{1,3}/g).join('.')
 
-        case 'uppercase-not-seperated':
+        case 'uppercase-not-separated':
             return normalizedInput.toUpperCase()
 
-        case 'uppercase-colon-seperated':
+        case 'uppercase-colon-separated':
             return normalizedInput.match(/.{1,2}/g).join(':').toUpperCase()
 
-        case 'uppercase-hypen-seperated':
+        case 'uppercase-hyphen-separated':
             return normalizedInput.match(/.{1,2}/g).join('-').toUpperCase()
 
-        case 'uppercase-period-seperated':
+        case 'uppercase-period-separated':
             return normalizedInput.match(/.{1,3}/g).join('.').toUpperCase()
 
         default:

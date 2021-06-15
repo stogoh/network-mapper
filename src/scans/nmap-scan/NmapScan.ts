@@ -406,7 +406,7 @@ export class NmapScan {
         return new Promise((resolve, reject) => {
             child.on('exit', (code) => {
                 if (code != 0) {
-                    return reject(`Nmap child porcess has exited with code: ${code}`)
+                    return reject(`Nmap child process has exited with code: ${code}`)
                 }
 
                 resolve(childOutput)

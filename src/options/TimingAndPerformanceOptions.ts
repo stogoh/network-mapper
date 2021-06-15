@@ -45,8 +45,8 @@ export interface ScanDelayOption {
     scanDelay?: number
 }
 
-export interface MaxScalDelayOption {
-    maxScalDelay?: number
+export interface MaxScanDelayOption {
+    maxScanDelay?: number
 }
 
 export interface MinRateOption {
