@@ -1,5 +1,6 @@
 import { spawn } from 'child_process'
 import { parseStringPromise as parseXml } from 'xml2js'
+import { formatMac } from '../../helpers/MacFormatter'
 import Host from '../../misc/Host'
 import { NmapScanOption } from './NmapScanOption'
 import NmapScanResponse from './NmapScanResponse'
@@ -35,7 +36,6 @@ export class NmapScan {
 
     protected constructArguments(): string[] {
         const opts = this.options as NmapScanOption
-
         const args = []
 
         // Output to console in XML format
@@ -187,7 +187,7 @@ export class NmapScan {
         //    args.push('--badsum')
         // }
 
-        // zomebieHost,zombiePort
+        // zombieHost,zombiePort
         // if (opts.zombieHost !== undefined) {
         //    args.push('-sI')
         //    if (opts.zombiePort !== undefined) {
@@ -226,9 +226,9 @@ export class NmapScan {
         // }
 
         // timing
-        // if (opts.timing !== undefined) {
-        //    args.push('-T', opts.timing)
-        // }
+        if (opts.timing !== undefined) {
+            args.push('-T', opts.timing)
+        }
 
         // minRate
         // if (opts.minRate !== undefined) {
@@ -284,12 +284,12 @@ export class NmapScan {
 
         // port
         // if (opts.port !== undefined) {
-        //    args.push('-p')
-        //    if (Array.isArray(opts.port)) {
-        //       args.push(opts.port.join())
-        //    } else {
-        //       args.push(opts.port)
-        //    }
+        //     args.push('-p')
+        //     if (Array.isArray(opts.port)) {
+        //         args.push(opts.port.join())
+        //     } else {
+        //         args.push(opts.port)
+        //     }
         // }
 
         // target
@@ -336,7 +336,7 @@ export class NmapScan {
                         if (hostAddress['addrtype'] === 'ipv4') {
                             responseHost.ipAddress = hostAddress['addr']
                         } else if (hostAddress['addrtype'] === 'mac') {
-                            responseHost.mac = hostAddress['addr']
+                            responseHost.mac = formatMac(hostAddress['addr'])
                             responseHost.vendor = hostAddress['vendor']
                         }
                     })

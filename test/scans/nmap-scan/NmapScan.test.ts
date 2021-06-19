@@ -1,5 +1,4 @@
 import { expect } from 'chai'
-import { NmapScanOption } from '../../../src/scans/nmap-scan/NmapScanOption'
 import { NmapScan } from '../../../src/scans/nmap-scan/NmapScan'
 
 export class TestableNmapScan extends NmapScan {
@@ -16,4 +15,3 @@ describe('Output format', () => {
         expect(argString, 'Output mode XML missing').contains('-oX -')
     })
 })
-

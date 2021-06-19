@@ -1,6 +1,7 @@
 import { DnsServerOption, RandomizeHostsOption, ResolveOption, TracerouteOption, UseSystemDnsOption } from '../../options/HostDiscoveryOptions'
 import { DryrunOption } from '../../options/MiscOptions'
 import { ExcludeOption, RandomOption, ScanTypeOption, TargetOption } from '../../options/TargetSpecificationOptions'
+import { TimingOption } from '../../options/TimingAndPerformanceOptions'
 
 export interface NmapScanOption extends
 ScanTypeOption,
@@ -12,5 +13,6 @@ DnsServerOption,
 UseSystemDnsOption,
 RandomizeHostsOption,
 DryrunOption,
-TracerouteOption
+TracerouteOption,
+TimingOption
 {}

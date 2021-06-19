@@ -1,6 +1,8 @@
+import Nmap from '../misc/Nmap'
+
 export type MacFormat = 'lowercase-not-separated' | 'lowercase-colon-separated' | 'lowercase-hyphen-separated' | 'lowercase-period-separated' | 'uppercase-not-separated' | 'uppercase-colon-separated' | 'uppercase-hyphen-separated' | 'uppercase-period-separated'
 
-export function formatMac(input: string, format: MacFormat): string {
+export function formatMac(input: string, format: MacFormat = Nmap.default.macFormatting): string {
     const normalizedInput = input.replace(/[^0-9a-f]/gi, '').toLowerCase()
 
     if (normalizedInput.length != 12) {
