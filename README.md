@@ -17,7 +17,7 @@ Installation is done using the `npm install` command:
 npm install network-mapper
 ```
 
-This package requires that [Nmap](https://nmap.org/) installed and available to the node application.
+This package requires that [Nmap](https://nmap.org/) is installed and available to the node application.
 
 ## Features
 
@@ -142,3 +142,7 @@ Before running large network scans it might be useful to run a dryrun fist. This
 ### traceroute
 
 Determine all intermediate hops between the scanner and target host. This works by sending packets with a low TTL (time-to-live) in an attempt to elicit ICMP Time Exceeded message from the intermediate hops. By increasing the TTL until the target host is reached, the traceroute can be determined.
+
+### timing
+
+The timing templates can be used to slowdown or speedup network scans. Instead of using the fine-grained controls, using the timing option is a lot easier to use and they have a very similar effect on the scan. 
