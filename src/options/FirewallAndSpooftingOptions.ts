@@ -10,8 +10,8 @@ export interface DecoyOption {
     decoy?: string | string[]
 }
 
-export interface SourceInterfaceOption {
-    sourceInterface?: string
+export interface InterfaceOption {
+    interface?: string
 }
 
 export interface SourceIpOption {

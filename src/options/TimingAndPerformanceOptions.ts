@@ -1,4 +1,4 @@
-export type NsockEngine = 'epoll' | 'kqueue' | 'poll' | 'select'
+export type NsockEngine = 'epoll' | 'kqueue' | 'poll' | 'select' | 'iocp'
 export type ScanTiming = 'paranoid' | 'sneaky' | 'polite' | 'normal' | 'aggressive' | 'insane'
 
 export interface MinHostgroupOption {
@@ -57,12 +57,12 @@ export interface MaxRateOption {
     maxRate?: number
 }
 
-export interface DefeatRstRateLimitOption {
-    defeatRstRateLimit?: number
+export interface IgnoreRstRateLimitOption {
+    ignoreRstRateLimit?: boolean
 }
 
-export interface DefeatIcmpRateLimitOption {
-    defeatIcmpRateLimit?: number
+export interface IgnoreIcmpRateLimitOption {
+    ignoreIcmpRateLimit?: boolean
 }
 
 export interface NsockEngineOption {

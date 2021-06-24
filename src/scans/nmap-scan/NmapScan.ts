@@ -113,9 +113,9 @@ export class NmapScan {
         }
 
         // ttl
-        // if (opts.ttl !== undefined) {
-        //    args.push('--ttl', opts.ttl)
-        // }
+        if (opts.ttl !== undefined) {
+            args.push('--ttl', opts.ttl)
+        }
 
         // topPorts
         // if (opts.topPorts !== undefined) {
@@ -127,50 +127,60 @@ export class NmapScan {
         //    args.push('--port-ratio', opts.portRatio)
         // }
 
-        // sourceInterface
-        // if (opts.sourceInterface !== undefined) {
-        //    args.push('-e', opts.sourceInterface)
-        // }
+        // interface
+        if (opts.interface !== undefined) {
+            args.push('-e', opts.interface)
+        }
 
         // sourceIp
-        // if (opts.sourceIp !== undefined) {
-        //    args.push('-S', opts.sourceIp)
-        // }
+        if (opts.sourceIp !== undefined) {
+            args.push('-S', opts.sourceIp)
+        }
 
         // sourcePort
-        // if (opts.sourcePort !== undefined) {
-        //    args.push('--source-port', opts.sourcePort)
-        // }
+        if (opts.sourcePort !== undefined) {
+            args.push('--source-port', opts.sourcePort)
+        }
 
         // fragment
-        // if (opts.fragment !== undefined) {
-        //    args.push('-f')
-        // }
+        if (opts.fragment) {
+            args.push('-f')
+        }
 
         // mtu
-        // if (opts.mtu !== undefined) {
-        //    args.push('--mtu', opts.mtu)
-        // }
+        if (opts.mtu !== undefined) {
+            args.push('--mtu', opts.mtu)
+        }
+
+        // decoy
+        if (opts.decoy !== undefined) {
+            args.push('-D')
+            if (Array.isArray(opts.decoy)) {
+                args.push(opts.decoy.join())
+            } else {
+                args.push(opts.decoy)
+            }
+        }
 
         // proxy
-        // if (opts.proxy !== undefined) {
-        //    args.push('--proxies')
-        //    if (Array.isArray(opts.proxy)) {
-        //       args.push(opts.proxy.join())
-        //    } else {
-        //       args.push(opts.proxy)
-        //    }
-        // }
+        if (opts.proxy !== undefined) {
+            args.push('--proxies')
+            if (Array.isArray(opts.proxy)) {
+                args.push(opts.proxy.join())
+            } else {
+                args.push(opts.proxy)
+            }
+        }
 
         // sourceMac
-        // if (opts.sourceMac !== undefined) {
-        //    args.push('--spoof-mac', opts.sourceMac)
-        // }
+        if (opts.sourceMac !== undefined) {
+            args.push('--spoof-mac', opts.sourceMac)
+        }
 
         // fastScan
-        // if (opts.fastScan !== undefined) {
-        //    args.push('-F')
-        // }
+        if (opts.fastScan) {
+            args.push('-F')
+        }
 
         // randomizeHosts
         if (opts.randomizeHosts) {
@@ -178,14 +188,29 @@ export class NmapScan {
         }
 
         // randomizePorts
-        // if (opts.randomizePorts === false) {
-        //    args.push('-r')
-        // }
+        if (opts.randomizePorts === false) {
+           args.push('-r')
+        }
 
         // badsum
-        // if (opts.badsum) {
-        //    args.push('--badsum')
-        // }
+        if (opts.badsum) {
+            args.push('--badsum')
+        }
+
+        // ipv6
+        if (opts.ipv6) {
+            args.push('-6')
+        }
+
+        // sendMechanism
+        switch (opts.sendMechanism) {
+            case 'ip':
+                args.push('--send-ip')
+                break
+            case 'eth':
+                args.push('--send-eth')
+                break
+        }
 
         // zombieHost,zombiePort
         // if (opts.zombieHost !== undefined) {
@@ -203,7 +228,7 @@ export class NmapScan {
         // }
 
         // osDetection
-        // if (opts.osDetection !== undefined) {
+        // if (opts.osDetection) {
         //    args.push('-O')
         // }
 
@@ -217,63 +242,122 @@ export class NmapScan {
         // }
 
         // privilegedMode
-        // if (opts.privilegedMode !== undefined) {
-        //    if (opts.privilegedMode) {
-        //       args.push('--privileged')
-        //    } else {
-        //       args.push('--unprivileged')
-        //    }
-        // }
+        if (opts.privilegedMode !== undefined) {
+           if (opts.privilegedMode) {
+              args.push('--privileged')
+           } else {
+              args.push('--unprivileged')
+           }
+        }
 
         // timing
         if (opts.timing !== undefined) {
             args.push('-T', opts.timing)
         }
 
+        // minHostgroup
+        if (opts.minHostgroup !== undefined) {
+            args.push('--min-hostgroup', opts.minHostgroup)
+        }
+
+        // maxHostgroup
+        if (opts.maxHostgroup !== undefined) {
+            args.push('--max-hostgroup', opts.maxHostgroup)
+        }
+
+        // minParallelism
+        if (opts.minParallelism !== undefined) {
+            args.push('--min-parallelism', opts.minParallelism)
+        }
+
+        // maxParallelism
+        if (opts.maxParallelism !== undefined) {
+            args.push('--max-parallelism', opts.maxParallelism)
+        }
+
         // minRate
-        // if (opts.minRate !== undefined) {
-        //    args.push('--min-rate', opts.minRate)
-        // }
+        if (opts.minRate !== undefined) {
+            args.push('--min-rate', opts.minRate)
+        }
 
         // maxRate
-        // if (opts.maxRate !== undefined) {
-        //    args.push('--max-rate', opts.maxRate)
-        // }
+        if (opts.maxRate !== undefined) {
+            args.push('--max-rate', opts.maxRate)
+        }
 
-        // minRttTimeout
-        // if (opts.minRttTimeout !== undefined) {
-        //    args.push('--min-rtt-timeout', opts.minRttTimeout)
-        // }
+        // ignoreRstRateLimit
+        if (opts.ignoreRstRateLimit) {
+            args.push('--defeat-rst-ratelimit')
+        }
 
-        // maxRttTimeout
-        // if (opts.maxRttTimeout !== undefined) {
-        //    args.push('--max-rtt-timeout', opts.maxRttTimeout)
-        // }
+        // ignoreIcmpRateLimit
+        if (opts.ignoreIcmpRateLimit) {
+            args.push('--defeat-icmp-ratelimit')
+        }
+
+        // disableArpPing
+        if (opts.disableArpPing) {
+            args.push('--disable-arp-ping')
+        }
 
         // initialRttTimeout
-        // if (opts.initialRttTimeout !== undefined) {
-        //    args.push('--initial-rtt-timeout', opts.initialRttTimeout)
-        // }
+        if (opts.initialRttTimeout !== undefined) {
+            args.push('--initial-rtt-timeout', opts.initialRttTimeout)
+        }
+
+        // minRttTimeout
+        if (opts.minRttTimeout !== undefined) {
+            args.push('--min-rtt-timeout', opts.minRttTimeout)
+        }
+
+        // maxRttTimeout
+        if (opts.maxRttTimeout !== undefined) {
+            args.push('--max-rtt-timeout', `${opts.maxRttTimeout}ms`)
+        }
+
+        // maxRetries
+        if (opts.maxRetries !== undefined) {
+            args.push('--max-retries', opts.maxRetries)
+        }
 
         // hostTimeout
-        // if (opts.hostTimeout !== undefined) {
-        //    args.push('--host-timeout', opts.hostTimeout)
-        // }
+        if (opts.hostTimeout !== undefined) {
+            args.push('--host-timeout', opts.hostTimeout)
+        }
+
+        // scriptTimeout
+        if (opts.scriptTimeout !== undefined) {
+            args.push('--script-timeout', opts.scriptTimeout)
+        }
+
+        // scanDelay
+        if (opts.scanDelay !== undefined) {
+            args.push('--scan-delay', opts.scanDelay)
+        }
+
+        // maxScanDelay
+        if (opts.maxScanDelay !== undefined) {
+            args.push('--max-scan-delay', `${opts.maxScanDelay}ms`)
+        }
+
+        // nsockEngine
+        if (opts.nsockEngine !== undefined) {
+            args.push('--nsock-engine', opts.nsockEngine)
+        }
+
+        // data
+        if (opts.data !== undefined) {
+            if (typeof (opts.data) == 'string') {
+                args.push('--data-string', `"${opts.data}"`)
+            } else if (Buffer.isBuffer(opts.data)) {
+                args.push('--data', opts.data.toString('hex'))
+            }
+        }
 
         // skipHostDiscovery
-        // if (opts.skipHostDiscovery !== undefined) {
-        //    args.push('-Pn')
-        // }
-
-        // sendMechanism
-        // switch (opts.sendMechanism) {
-        //    case 'ip':
-        //       args.push('--send-ips')
-        //       break
-        //    case 'eth':
-        //       args.push('--send-eth')
-        //       break
-        // }
+        if (opts.skipHostDiscovery) {
+           args.push('-Pn')
+        }
 
         // dryrun
         if (opts.dryrun !== undefined && opts.scanType == 'list-scan') {
@@ -325,7 +409,7 @@ export class NmapScan {
                 if (hostStatus) {
                     responseHost.state = hostStatus['state']
                     responseHost.reason = hostStatus['reason'],
-                    responseHost.ttl = Number(hostStatus['reason_ttl'])
+                        responseHost.ttl = Number(hostStatus['reason_ttl'])
                 }
 
                 // addresses
@@ -398,6 +482,9 @@ export class NmapScan {
 
     protected async exec(): Promise<string> {
         let childOutput = ''
+
+        console.log(this.arguments.join(' '))
+
         const child = await spawn(this.nmapLocation, this.arguments)
         child.stdout.on('data', (chunk: Buffer) => {
             childOutput += chunk.toString()
