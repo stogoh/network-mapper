@@ -360,10 +360,8 @@ export class NmapScan {
         }
 
         // dryrun
-        if (opts.dryrun !== undefined && opts.scanType == 'list-scan') {
-            if (opts.dryrun) {
-                args.push('-n')
-            }
+        if (opts.dryrun && opts.scanType == 'list-scan') {
+            args.push('-n')
         }
 
         // port
