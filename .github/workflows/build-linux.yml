@@ -21,5 +21,8 @@ jobs:
       - name: Installing Nmap
         run: sudo apt-get install nmap
 
+      - name: Clean Install
+        run: npm ci
+
       - name: Test
         run:  npm test
