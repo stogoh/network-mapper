@@ -4,10 +4,9 @@ Nmap wrapper for node fully coded in TypeScript.
 
 This module is still in heavy development. As of now only the list scan is implemented, further more advanced scans will be implemented.
 
+[![Linux build](https://github.com/stogoh/network-mapper/actions/workflows/build-linux.yml/badge.svg?branch=master&event=push)](https://github.com/stogoh/network-mapper/actions/workflows/build-linux.yml)
 ![NPM](https://img.shields.io/npm/l/network-mapper?label=License)
 ![npm](https://img.shields.io/npm/dt/network-mapper?label=Downloads)
-![GitHub issues](https://img.shields.io/github/issues/stogoh/network-mapper?label=Issues)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/stogoh/network-mapper?label=Pull%20Requests)
 
 ## Installation
 
