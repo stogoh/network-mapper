@@ -23,8 +23,7 @@
             { "SwitchCase": 1}
         ],
         "linebreak-style": [
-            "error",
-            "windows"
+            "off"
         ],
         "quotes": [
             "error",
@@ -56,6 +55,12 @@
                     "^hostnames$"
                 ],
                 "minLength": 4
+            }
+        ],
+        "@typescript-eslint/no-empty-interface": [
+            "error",
+            {
+              "allowSingleExtends": false
             }
         ]
     }

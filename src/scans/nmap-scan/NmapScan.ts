@@ -189,7 +189,7 @@ export class NmapScan {
 
         // randomizePorts
         if (opts.randomizePorts === false) {
-           args.push('-r')
+            args.push('-r')
         }
 
         // badsum
@@ -243,11 +243,11 @@ export class NmapScan {
 
         // privilegedMode
         if (opts.privilegedMode !== undefined) {
-           if (opts.privilegedMode) {
-              args.push('--privileged')
-           } else {
-              args.push('--unprivileged')
-           }
+            if (opts.privilegedMode) {
+                args.push('--privileged')
+            } else {
+                args.push('--unprivileged')
+            }
         }
 
         // timing
@@ -356,14 +356,12 @@ export class NmapScan {
 
         // skipHostDiscovery
         if (opts.skipHostDiscovery) {
-           args.push('-Pn')
+            args.push('-Pn')
         }
 
         // dryrun
-        if (opts.dryrun !== undefined && opts.scanType == 'list-scan') {
-            if (opts.dryrun) {
-                args.push('-n')
-            }
+        if (opts.dryrun && opts.scanType == 'list-scan') {
+            args.push('-n')
         }
 
         // port
@@ -409,7 +407,7 @@ export class NmapScan {
                 if (hostStatus) {
                     responseHost.state = hostStatus['state']
                     responseHost.reason = hostStatus['reason'],
-                        responseHost.ttl = Number(hostStatus['reason_ttl'])
+                    responseHost.ttl = Number(hostStatus['reason_ttl'])
                 }
 
                 // addresses

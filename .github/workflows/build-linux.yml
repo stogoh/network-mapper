@@ -1,0 +1,28 @@
+name: Linux build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setting up NodeJS
+        uses: actions/setup-node@v1
+
+      - name: Installing Nmap
+        run: sudo apt-get install nmap
+
+      - name: Clean Install
+        run: npm ci
+
+      - name: Test
+        run:  npm test
