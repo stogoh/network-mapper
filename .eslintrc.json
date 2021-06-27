@@ -57,6 +57,12 @@
                 ],
                 "minLength": 4
             }
-        ]
+        ],
+        "@typescript-eslint/no-empty-interface": [
+            "error",
+            {
+              "allowSingleExtends": false
+            }
+          ]
     }
 }
