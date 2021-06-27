@@ -23,8 +23,7 @@
             { "SwitchCase": 1}
         ],
         "linebreak-style": [
-            "error",
-            "windows"
+            "off"
         ],
         "quotes": [
             "error",
@@ -63,6 +62,6 @@
             {
               "allowSingleExtends": false
             }
-          ]
+        ]
     }
 }
