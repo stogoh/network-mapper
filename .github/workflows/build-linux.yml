@@ -8,15 +8,15 @@ on:
 
   workflow_dispatch:
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-      steps:
-        - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-        - name: Installing Nmap
-          run: sudo apt-get install nmap
+      - name: Installing Nmap
+        run: sudo apt-get install nmap
 
-        - name: Test
-          run:  npm test
+      - name: Test
+        run:  npm test
