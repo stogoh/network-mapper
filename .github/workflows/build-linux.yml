@@ -15,11 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Setting up NodeJS
+        uses: actions/setup-node@v1
+
       - name: Installing Nmap
         run: sudo apt-get install nmap
-
-      - name: Installing mocha globally
-        run: npm install -g mocha
 
       - name: Test
         run:  npm test
