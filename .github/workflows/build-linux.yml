@@ -18,5 +18,8 @@ jobs:
       - name: Installing Nmap
         run: sudo apt-get install nmap
 
+      - name: Installing mocha globally
+        run: npm install -g mocha
+
       - name: Test
         run:  npm test
