@@ -96,7 +96,7 @@ main()
 ## Scan Types
 
 - `ListScan` Lists each host of the network(s) specified, without sending any packets to the target hosts.
-- `NmapScan` This is the core scan of the package, using this scan type directly will allow to run very customized scans.
+- `NmapScan` This is the core scan of the package, using this scan type directly will allow you to run very customized scans.
 
 ## Options
 
@@ -223,7 +223,7 @@ Enforces the use of the given nsock IO multiplexing engine. Keep in mind that no
 
 ### minRate
 
-Enforces Nmap to send the specified amount of packages per second. Specifying a minimum rate should be done with care. Scanning faster than a network support by lead to loss of accuracy.
+Enforces Nmap to send the specified amount of packages per second. Specifying a minimum rate should be done with care. Scanning faster than a network support may lead to loss of accuracy.
 
 ### maxRate
 
