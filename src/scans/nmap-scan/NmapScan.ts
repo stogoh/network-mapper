@@ -2,6 +2,7 @@ import { spawn } from 'child_process'
 import { parseStringPromise as parseXml } from 'xml2js'
 import { formatMac } from '../../helpers/MacFormatter'
 import Host from '../../misc/Host'
+import Port from '../../misc/Port'
 import { NmapScanOption } from './NmapScanOption'
 import NmapScanResponse from './NmapScanResponse'
 
@@ -261,14 +262,18 @@ export class NmapScan {
                     if (portArray) {
                         responseHost.ports = []
                         portArray.forEach(port => {
-                            responseHost.ports.push({
+                            const openPort = {
                                 number: Number(port['portid']),
                                 protocol: port['protocol'],
                                 state: port['state']['state'],
-                                service: port['service']?.['name'],
                                 reason: port['state']['reason'],
                                 ttl: Number(port['state']['reason_ttl'])
-                            })
+                            } as Port
+
+                            if (port['service'] !== undefined)
+                                openPort.service = port['service']['name']
+
+                            responseHost.ports.push(openPort)
                         })
                     }
                 }
