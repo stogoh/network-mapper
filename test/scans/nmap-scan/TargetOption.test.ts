@@ -20,7 +20,7 @@ describe('Option: target', () => {
         })
         argString = scan.constructArguments().join(' ')
 
-        expect(argString.endsWith('www.google.com,www.cloudflare.com')).to.be.true
+        expect(argString.endsWith('www.google.com www.cloudflare.com')).to.be.true
     })
 
     it('Single target address', () => {
@@ -38,16 +38,15 @@ describe('Option: target', () => {
         })
         argString = scan.constructArguments().join(' ')
 
-        expect(argString.endsWith('1.1.1.1,8.8.8.8')).to.be.true
+        expect(argString.endsWith('1.1.1.1 8.8.8.8')).to.be.true
     })
 
-    
     it('Mixed target address types', () => {
         scan = new TestableNmapScan({
             target: ['1.1.1.1', 'www.google.com']
         })
         argString = scan.constructArguments().join(' ')
 
-        expect(argString.endsWith('1.1.1.1,www.google.com')).to.be.true
+        expect(argString.endsWith('1.1.1.1 www.google.com')).to.be.true
     })
 })
