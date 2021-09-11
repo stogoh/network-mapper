@@ -20,25 +20,24 @@ This package requires that [Nmap](https://nmap.org/) is installed and available 
 
 ## Features
 
-- Awaitable functions which may take a few seconds
+-   Awaitable functions which may take a few seconds
 
 ## Usage
 
 ### Simple list scan
+
 The following example scans the specified target network for hosts.
 
 ```typescript
 import { ListScan } from 'network-mapper'
 
 async function main() {
-
     const scan = new ListScan({
         target: '192.168.1.1/24'
     })
 
     const result = await scan.run()
     console.log(result)
-
 }
 
 main()
@@ -52,7 +51,6 @@ The following example scans a specified target network. The first and last hosts
 import { ListScan } from 'network-mapper'
 
 async function main() {
-
     const scan = new ListScan({
         target: '192.168.1.1/24',
         exclude: ['192.168.1.0', '192.168.1.255'],
@@ -61,7 +59,6 @@ async function main() {
 
     const result = await scan.run()
     console.log(result)
-
 }
 
 main()
@@ -75,7 +72,6 @@ The following example uses the core NmapScan. A ping scan is used to discover if
 import { NmapScan } from 'network-mapper'
 
 async function main() {
-
     const scan = new NmapScan({
         scanType: 'ping-scan',
         target: 'google.com/24',
@@ -86,7 +82,6 @@ async function main() {
 
     const result = await scan.run()
     console.log(result)
-
 }
 
 main()
@@ -94,8 +89,8 @@ main()
 
 ## Scan Types
 
-- `ListScan` Lists each host of the network(s) specified, without sending any packets to the target hosts.
-- `NmapScan` This is the core scan of the package, using this scan type directly will allow you to run very customized scans.
+-   `ListScan` Lists each host of the network(s) specified, without sending any packets to the target hosts.
+-   `NmapScan` This is the core scan of the package, using this scan type directly will allow you to run very customized scans.
 
 ## Options
 
@@ -109,6 +104,10 @@ When a hostname is given as a target, it is resolved via the domain name system.
 
 Specifies targets hosts to be excluded from the scan. The hosts passed can include hostnames, CIDR netblocks, IP ranges, etc.
 
+### excludePort
+
+Specifies ports which are excluded from the scan.
+
 ### random
 
 For larger network scans it might be useful to choose target hosts at random. Using this option an amount of random hosts can be specified.
@@ -121,10 +120,10 @@ The underlying Nmap process scans the hosts in order. Some IDS(Intrusion detecti
 
 Specifies for which IP addresses a reverse DNS lookup is run.
 
-- `never` Do not run reverse DNS lookup for any address
-- `sometimes` Nmap decides which addresses to run a reverse DNS lookup
-- `always` Try to resolve each target host address
-- `all` Also resolve all hosts addresses which are a part of the traceroute
+-   `never` Do not run reverse DNS lookup for any address
+-   `sometimes` Nmap decides which addresses to run a reverse DNS lookup
+-   `always` Try to resolve each target host address
+-   `all` Also resolve all hosts addresses which are a part of the traceroute
 
 ### useSystemDns
 
@@ -163,14 +162,14 @@ Some hosts simply take a long time to scan. This may be due to poorly performing
 Specifies the minimum group size in which a scan is divided into.
 
 ### maxHostgroup
- 
+
 Specifies the maximum group size in which a scan is divided into.
 
 ### minParallelism
 
 Set this option to a number higher than one to speed up scans on poorly performing hosts or networks. This is a risky options to play with, as setting it too high may affect accuracy.
 
-### maxParallelism 
+### maxParallelism
 
 Specifies the maximal total number of probes outstanding for a host group. This options is sometimes set to one to prevent Nmap from sending more than one probe at a time to hosts.
 
@@ -196,7 +195,7 @@ Specifies the timeout value for the execution of a script. Any script instance w
 
 ### scanDelay
 
-Specifies the least given amount of time between each probe send to a given host. 
+Specifies the least given amount of time between each probe send to a given host.
 
 ### maxScanDelay
 
@@ -214,11 +213,11 @@ This options increases UDP scanning speed by ignoring ICMP error messages with a
 
 Enforces the use of the given nsock IO multiplexing engine. Keep in mind that not all engines will be available on all systems. Currently the following engines are implemented in the underlying application.
 
-- `epoll`
-- `kqueue`
-- `poll`
-- `select`
-- `iocp`
+-   `epoll`
+-   `kqueue`
+-   `poll`
+-   `select`
+-   `iocp`
 
 ### minRate
 
@@ -234,8 +233,7 @@ Ths options causes the requested scan to use tiny fragmented IP packets. If a cu
 
 ### mtu
 
-Specifies the length of the fragmented IP packet. The value must be a multiple of eight. 
-
+Specifies the length of the fragmented IP packet. The value must be a multiple of eight.
 
 ### decoy
 
@@ -275,9 +273,9 @@ Enforces the use of IPv6 addresses.
 
 Forces Nmap to use the specified send mechanism.
 
-- `ip` Sends packets via raw IP sockets rather than sending lower level ethernet frames.
-- `eth` Sends packets at the raw ethernet (data link) layer rather than the higher IP (network) layer.
-- `auto` Tells Nmap to automatically select the proper send mechanism. Same as not defining the send mechanism.
+-   `ip` Sends packets via raw IP sockets rather than sending lower level ethernet frames.
+-   `eth` Sends packets at the raw ethernet (data link) layer rather than the higher IP (network) layer.
+-   `auto` Tells Nmap to automatically select the proper send mechanism. Same as not defining the send mechanism.
 
 ### disableArpPing
 
@@ -289,4 +287,17 @@ By default, the ports to be scanned are randomized. This randomization is normal
 
 ### skipHostDiscovery
 
-This option skips the host discovery stage altogether. This options is necessary, when target hosts do not respond to ICMP ping packets.
+This option skips the host discovery stage altogether. This options is necessary, when target hosts do not respond to ICMP ping
+packets.
+
+### port
+
+Only scan the specified ports. This options specifies which ports should be scanned and overrides the default. Ports can also be specified by name according to what the port is referred in the _nmap-services_ file.
+
+### portRatio
+
+Scans all ports in the _nmap-services_ file with a ratio greater that the given value. The value must be between 0.0 and 1.0.
+
+### topPorts
+
+Scans the specified highest ratio ports found in the _nmap-services_ file after excluding all port specified by `excludePort`. The value must be 1 or greater.

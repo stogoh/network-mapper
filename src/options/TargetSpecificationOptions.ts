@@ -1,13 +1,7 @@
-import { PortScanMethod } from './PortSpecificationOptions'
-
 export type ScanType = 'list-scan' | 'ping-scan' | 'protocol-scan'
 
 export interface ScanTypeOption {
     scanType?: ScanType
-}
-
-export interface PortScanMethodOption {
-    portScanMethod?: PortScanMethod
 }
 
 export interface TargetOption {
