@@ -172,17 +172,18 @@ export class NmapScan {
     private addSimpleArgument(label: string, value: unknown, formattedValue?: unknown) {
         if (value === undefined) return
 
-        this.args.push(label, formattedValue ?? value)
+        const representation = formattedValue !== undefined ? formattedValue : value
+        this.args.push(label, representation)
     }
 
-    private addArrayArgument(label: string, value: unknown, seperator?: string) {
+    private addArrayArgument(label: string, value: unknown) {
         if (value === undefined) return
 
         if (label != undefined) {
             this.args.push(label)
         }
 
-        this.args.push(Array.isArray(value) ? value.join(seperator ?? ',') : value)
+        this.args.push(Array.isArray(value) ? value.join(',') : value)
     }
 
     protected parse(): void {
