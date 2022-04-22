@@ -141,6 +141,7 @@ export class NmapScan {
         this.addSimpleArgument('--max-rtt-timeout', opts.maxRttTimeout)
         this.addSimpleArgument('--max-retries', opts.maxRetries)
         this.addSimpleArgument('--host-timeout', opts.hostTimeout)
+        this.addSimpleArgument('--script', opts.script)
         this.addSimpleArgument('--script-timeout', opts.scriptTimeout)
         this.addSimpleArgument('--scan-delay', opts.scanDelay)
         this.addSimpleArgument('--max-scan-delay', opts.maxScanDelay, `${opts.maxScanDelay}ms`)
@@ -262,6 +263,7 @@ export class NmapScan {
                     if (portArray) {
                         responseHost.ports = []
                         portArray.forEach(port => {
+                            if (port === undefined) return
                             const openPort = {
                                 number: Number(port['portid']),
                                 protocol: port['protocol'],
@@ -273,9 +275,26 @@ export class NmapScan {
                             if (port['service'] !== undefined)
                                 openPort.service = port['service']['name']
 
+                            if (port['script'] !== undefined)
+                                openPort.script = port['script']
+
                             responseHost.ports.push(openPort)
                         })
                     }
+                }
+
+                if (host['hostscript']) {
+                    responseHost.hostscripts = []
+                    const scriptResults = host['hostscript']['script']
+                    scriptResults.forEach(script => {
+                        const scriptResult = {
+                            id: script.id,
+                            output: script.output
+                        }
+                        // console.log("SCRIPT ==================")
+                        // console.log(`${script.id} - ${script.output}`)
+                        responseHost.hostscripts.push(scriptResult)
+                    })
                 }
 
                 this.response.hosts.push(responseHost)

@@ -1,5 +1,6 @@
 import { Hop } from './Hop'
 import Port from './Port'
+import Script from './Script'
 
 export default interface Host {
     state?: 'up' | 'down'
@@ -11,4 +12,5 @@ export default interface Host {
     vendor?: string
     hops?: Hop[]
     ports?: Port[]
+    hostscripts?: Script[]
 }
