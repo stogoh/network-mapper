@@ -291,8 +291,6 @@ export class NmapScan {
                             id: script.id,
                             output: script.output
                         }
-                        // console.log("SCRIPT ==================")
-                        // console.log(`${script.id} - ${script.output}`)
                         responseHost.hostscripts.push(scriptResult)
                     })
                 }
