@@ -1,5 +1,5 @@
 import { BadsumOption, DataOption, DecoyOption, FragmentOption, InterfaceOption, MtuOption, ProxyOption, SourceIpOption, SourceMacOption, SourcePortOption, TtlOption } from '../../options/FirewallAndSpooftingOptions'
-import { DisableArpPingOption, DnsServerOption, RandomizeHostsOption, ResolveOption, SkipHostDiscoveryOption, TracerouteOption, UseSystemDnsOption } from '../../options/HostDiscoveryOptions'
+import { DisableArpPingOption, DnsServerOption, RandomizeHostsOption, ResolveOption, SkipHostDiscoveryOption, TracerouteOption, UseSystemDnsOption, IntensityOption } from '../../options/HostDiscoveryOptions'
 import { DryrunOption, Ipv6Option, PrivilegedModeOption, SendMechanismOption, ScriptOption } from '../../options/MiscOptions'
 import { ExcludePortOption, FastScanOption, PortOption, PortRatioOption, RandomizePortsOption, TopPortsOption } from '../../options/PortSpecificationOptions'
 import { ExcludeOption, RandomOption, ScanTypeOption, TargetOption } from '../../options/TargetSpecificationOptions'
@@ -56,4 +56,5 @@ export interface NmapScanOption extends
     PortOption,
     PortRatioOption,
     TopPortsOption,
-    ScriptOption { }
+    ScriptOption,
+    IntensityOption { }

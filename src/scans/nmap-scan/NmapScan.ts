@@ -152,6 +152,7 @@ export class NmapScan {
         this.addSimpleArgument('--port-ratio', opts.portRatio)
         this.addSimpleArgument('--top-ports', opts.topPorts)
         this.addSimpleArgument('-iR', opts.random)
+        this.addSimpleArgument('--version-intensity', opts.intensity)
         // this.addArrayArgument(undefined, opts.target, ' ')
 
         if (opts.target !== undefined) {

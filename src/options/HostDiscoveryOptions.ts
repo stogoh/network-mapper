@@ -35,3 +35,7 @@ export interface IgnoreRstOption {
 export interface DisableArpPingOption {
     disableArpPing?: boolean
 }
+
+export interface IntensityOption {
+    intensity?: number // --version-intensity option
+}
