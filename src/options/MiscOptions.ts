@@ -19,3 +19,7 @@ export interface DryrunOption {
 export interface PrivilegedModeOption {
     privilegedMode?: boolean
 }
+
+export interface ScriptOption {
+    script?: string;
+}

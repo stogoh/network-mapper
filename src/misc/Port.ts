@@ -5,4 +5,5 @@ export default interface Port {
     state?: string
     reason?: string
     ttl?: number
+    script?: string[]
 }

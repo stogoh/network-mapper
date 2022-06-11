@@ -1,6 +1,6 @@
 import { BadsumOption, DataOption, DecoyOption, FragmentOption, InterfaceOption, MtuOption, ProxyOption, SourceIpOption, SourceMacOption, SourcePortOption, TtlOption } from '../../options/FirewallAndSpooftingOptions'
-import { DisableArpPingOption, DnsServerOption, RandomizeHostsOption, ResolveOption, SkipHostDiscoveryOption, TracerouteOption, UseSystemDnsOption } from '../../options/HostDiscoveryOptions'
-import { DryrunOption, Ipv6Option, PrivilegedModeOption, SendMechanismOption } from '../../options/MiscOptions'
+import { DisableArpPingOption, DnsServerOption, RandomizeHostsOption, ResolveOption, SkipHostDiscoveryOption, TracerouteOption, UseSystemDnsOption, IntensityOption } from '../../options/HostDiscoveryOptions'
+import { DryrunOption, Ipv6Option, PrivilegedModeOption, SendMechanismOption, ScriptOption } from '../../options/MiscOptions'
 import { ExcludePortOption, FastScanOption, PortOption, PortRatioOption, RandomizePortsOption, TopPortsOption } from '../../options/PortSpecificationOptions'
 import { ExcludeOption, RandomOption, ScanTypeOption, TargetOption } from '../../options/TargetSpecificationOptions'
 import { HostTimeoutOption, IgnoreIcmpRateLimitOption, IgnoreRstRateLimitOption, InitialRttTimeoutOption, MaxHostgroupOption, MaxParallelismOption, MaxRateOption, MaxRetriesOption, MaxRttTimeoutOption, MaxScanDelayOption, MinHostgroupOption, MinParallelismOption, MinRateOption, MinRttTimeoutOption, NsockEngineOption, ScanDelayOption, ScriptTimeoutOption, TimingOption } from '../../options/TimingAndPerformanceOptions'
@@ -55,4 +55,6 @@ export interface NmapScanOption extends
     SkipHostDiscoveryOption,
     PortOption,
     PortRatioOption,
-    TopPortsOption { }
+    TopPortsOption,
+    ScriptOption,
+    IntensityOption { }
