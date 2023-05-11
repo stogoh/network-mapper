@@ -301,3 +301,11 @@ Scans all ports in the _nmap-services_ file with a ratio greater that the given 
 ### topPorts
 
 Scans the specified highest ratio ports found in the _nmap-services_ file after excluding all port specified by `excludePort`. The value must be 1 or greater.
+
+### script
+
+Runs a script scan using the comma-separated list of filenames, script categories, and directories.
+
+### intensity
+
+Use the `intensity` to specify which probes should be applied. The higher the number, the more likely it is the service will be correctly identified.
