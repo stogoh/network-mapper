@@ -153,7 +153,6 @@ export class NmapScan {
         this.addSimpleArgument('--top-ports', opts.topPorts)
         this.addSimpleArgument('-iR', opts.random)
         this.addSimpleArgument('--version-intensity', opts.intensity)
-        // this.addArrayArgument(undefined, opts.target, ' ')
 
         if (opts.target !== undefined) {
             if (Array.isArray(opts.target)) {
@@ -285,14 +284,14 @@ export class NmapScan {
                 }
 
                 if (host['hostscript']) {
-                    responseHost.hostscripts = []
+                    responseHost.scripts = []
                     const scriptResults = host['hostscript']['script']
                     scriptResults.forEach(script => {
                         const scriptResult = {
                             id: script.id,
                             output: script.output
                         }
-                        responseHost.hostscripts.push(scriptResult)
+                        responseHost.scripts.push(scriptResult)
                     })
                 }
 
