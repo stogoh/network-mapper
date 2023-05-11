@@ -12,5 +12,5 @@ export default interface Host {
     vendor?: string
     hops?: Hop[]
     ports?: Port[]
-    hostscripts?: Script[]
+    scripts?: Script[]
 }
